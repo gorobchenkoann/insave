@@ -1,7 +1,7 @@
 {
-  "name": "my-react-parcel-starter-kit",
+  "name": "save-from-inst",
   "version": "1.0.0",
-  "description": "Starter kit to build React apps with Parcel bundler",
+  "description": "Web app to save inages from Instagram",
   "main": "index.js",
   "scripts": {
     "clean": "rm -rf dist",
