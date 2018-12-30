@@ -1,3 +1,2 @@
-# my-react-parcel-starter-kit
-
-Starter kit to build React apps with Parcel bundler
+# Save-from-inst
+Web app to save imager from Instagram
