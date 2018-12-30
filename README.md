@@ -1,2 +1,2 @@
 # Save-from-inst
-Web app to save imager from Instagram
+Web app to save images from Instagram
