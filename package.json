@@ -12,6 +12,9 @@
   "license": "ISC",
   "dependencies": {
     "autoprefixer": "^9.4.3",
+    "axios": "^0.18.0",
+    "cheerio": "^1.0.0-rc.2",
+    "cherio": "^1.0.0-rc.2",
     "parcel-bundler": "^1.11.0",
     "postcss-modules": "^1.4.1",
     "react": "^16.7.0",

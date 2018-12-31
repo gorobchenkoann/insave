@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    flex-direction: column;
     width: 100vw;
     height: 100vh;
     background-image: url('./assets/bg-dark.png');
@@ -11,10 +12,7 @@
     height: 50px;
     padding: 40px;
     background: rgba(0, 0, 0, 0.5);
-    margin-top: 200px;
-    margin-bottom: auto;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
 }
 
 .input {
@@ -48,4 +46,10 @@
     &:active {        
         box-shadow: inset 2px 2px 2px darken(#076d31, 15%);
     }
+}
+
+.image {
+    margin: auto;
+    width: 400px;
+    height: auto;
 }

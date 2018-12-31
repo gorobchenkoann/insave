@@ -1,11 +1,16 @@
 import React from 'react';
+import axios from 'axios';
+import cheerio from 'cheerio';
 import { FaSearch } from 'react-icons/fa';
 import styles from './App.scss';
 
 export class App extends React.Component {
     state = {
-        value: null
+        value: null,
+        image_url: null
     }
+
+    property = 'display_url'
 
     inputChangeHandler = e => {
         this.setState({
@@ -21,7 +26,16 @@ export class App extends React.Component {
     }
 
     searchImage = () => {
-        console.log('Search image: ', this.state.value)
+        axios.get(this.state.value)
+            .then(response => {
+                let data = response.data;
+                data = data.split('window._sharedData = ')[1];
+                data = data.split(';</script>')[0];
+                data = JSON.parse(data);
+                let image_url = data.entry_data.PostPage[0].graphql.shortcode_media.display_url;
+                this.setState({image_url: image_url});
+            })
+            .catch(error => console.log(error))            
     }
 
     render() {
@@ -42,6 +56,10 @@ export class App extends React.Component {
                         <FaSearch />
                     </button>
                 </form>
+                {this.state.image_url ?                     
+                    <img src={this.state.image_url} className={styles.image} />                    
+                    : null
+                }
             </div>
         )
     }
