@@ -32,6 +32,7 @@ export class App extends React.Component {
                 data = data.split('window._sharedData = ')[1];
                 data = data.split(';</script>')[0];
                 data = JSON.parse(data);
+                console.log(data)
                 let image_url = data.entry_data.PostPage[0].graphql.shortcode_media.display_url;
                 this.setState({image_url: image_url});
             })

@@ -1,3 +1,4 @@
+display_url -> display_resources [array]
 add 'save' button
 add light theme
 check urls, show errors
