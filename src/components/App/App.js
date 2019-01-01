@@ -42,10 +42,19 @@ export class App extends React.Component {
     render() {
         return (
             <div className={styles.container}>
+            <div class={styles.inner}>
+                {this.state.image_url ? null :
+                <h1 className={styles.title}>
+                    You can download photos from Instagram using this app. 
+                    To do this, copy the link to the post in Instagram 
+                    and paste into the box below.
+                </h1>
+                }
                 <form className={styles.form}>
                     <input 
                         type='text' 
                         value={this.state.values}
+                        placeholder='https://www.instagram.com/p/BqdB0YHgOri/'
                         onChange={this.inputChangeHandler}
                         className={styles.input} 
                     />
@@ -57,6 +66,7 @@ export class App extends React.Component {
                         <FaSearch />
                     </button>
                 </form>
+                </div>
                 {this.state.image_url ?                     
                     <img src={this.state.image_url} className={styles.image} />                    
                     : null
