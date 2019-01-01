@@ -1,16 +1,14 @@
 import React from 'react';
 import axios from 'axios';
-import cheerio from 'cheerio';
-import { FaSearch } from 'react-icons/fa';
+import { FaSearch, FaSun, FaMoon } from 'react-icons/fa';
 import styles from './App.scss';
 
 export class App extends React.Component {
     state = {
         value: null,
-        image_url: null
+        image_url: null,
+        theme: 'dark'
     }
-
-    property = 'display_url'
 
     inputChangeHandler = e => {
         this.setState({
@@ -39,10 +37,20 @@ export class App extends React.Component {
             .catch(error => console.log(error))            
     }
 
+    toggleTheme = () => {
+        this.setState(state => ({
+            theme: 
+                state.theme === 'dark' ? 'light' : 'dark'
+        }))
+    }
+
     render() {
         return (
             <div className={styles.container}>
-            <div class={styles.inner}>
+            <button className={styles.theme_button} onClick={this.toggleTheme}>
+                {this.state.theme === 'dark' ? <FaSun /> : <FaMoon />}                
+            </button>
+            <div className={styles.inner}>
                 {this.state.image_url ? null :
                 <h1 className={styles.title}>
                     You can download photos from Instagram using this app. 
