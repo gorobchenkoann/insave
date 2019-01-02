@@ -9,7 +9,8 @@ export class App extends React.Component {
     state = {
         value: null,
         image_url: null,
-        theme: 'dark'
+        theme: 'dark',
+        error: false
     }
 
     inputChangeHandler = e => {
@@ -38,9 +39,16 @@ export class App extends React.Component {
                 data = JSON.parse(data);
                 console.log(data)
                 let image_url = data.entry_data.PostPage[0].graphql.shortcode_media.display_url;
-                this.setState({image_url: image_url});
+                this.setState({
+                    image_url: image_url,
+                    error: false
+                });
             })
-            .catch(error => console.log(error))            
+            .catch(error => 
+                this.setState({
+                    error: true
+                })
+            )            
     }
 
     toggleTheme = () => {
@@ -84,6 +92,10 @@ export class App extends React.Component {
                     <ImageWrap href={this.state.image_url}>            
                         <Image src={this.state.image_url} />  
                     </ImageWrap>                  
+                    : null
+                }
+                {this.state.error ? 
+                    <Error as='h2'>There is something wrong with this URL, try again.</Error> 
                     : null
                 }
                 <CopyrightText>
@@ -156,6 +168,12 @@ const Title = styled.h1`
         margin-right: auto;
         font-size: 18px;
     }
+`;
+
+const Error = styled(Title)`
+    margin-top: 30px;
+    color: #970808;
+    font-weight: 700;
 `;
 
 const SearchFrom = styled.form`
