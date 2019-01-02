@@ -2,8 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { FaSearch, FaSun, FaMoon, FaGithub } from 'react-icons/fa';
-import bgDark from '../../assets/bg-dark.png';
-import bgLight from '../../assets/bg-light.png';
+
+import { theme } from '../../utils/theme';
 
 export class App extends React.Component {
     state = {
@@ -51,12 +51,13 @@ export class App extends React.Component {
     }
 
     render() {
-        return (
+        return (            
+            <ThemeProvider theme={theme[this.state.theme]}>
             <Container>
                 <ThemeButton 
                     onClick={this.toggleTheme}
                 >
-                    {this.state.theme === 'dark' ? <FaSun /> : <FaMoon />}                
+                    {this.state.theme === 'dark' ? <FaSun /> : <FaMoon />} 
                 </ThemeButton>
                 <InnerContainer>
                     {this.state.image_url ? null :
@@ -89,19 +90,9 @@ export class App extends React.Component {
                     <CopyrightIcon><FaGithub /></CopyrightIcon>
                     Made by <CopyrightLink>gorobchenkoann</CopyrightLink>                    
                 </CopyrightText>
-            </Container>            
+            </Container>  
+            </ThemeProvider>          
         )
-    }
-}
-
-const theme = {
-    dark: {
-        background: '',
-        color: '#cacaca'
-    },
-    light: {
-        background: '',
-        color: '#000000'
     }
 }
 
@@ -110,13 +101,18 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     width: 100vw;
+    min-width: 350px;
     min-height: 100vh;
-    background-image: url(${bgDark});   
+    background-image: ${props => props.theme.background};   
 `;
 
 const InnerContainer = styled.div`
     width: 800px;
     margin: 0 auto;
+
+    @media (max-width: 800px) {
+        width: 100%;
+    }
 `;
 
 const ThemeButton = styled.button.attrs({
@@ -124,8 +120,8 @@ const ThemeButton = styled.button.attrs({
 })`
     display: flex;
     position: absolute;
-    top: 40px;
-    right: 40px;
+    top: 10px;
+    right: 10px;
     width: 50px;
     height: 50px;    
     background: #cacaca;
@@ -139,14 +135,27 @@ const ThemeButton = styled.button.attrs({
         width: 50%;
         height: auto;
     }
+
+    @media (max-width: 800px) {
+        width: 40px;
+        height: 40px;
+    }
 `;
 
 const Title = styled.h1`
     margin-top: 100px;
     font-size: 22px;
-    color: #ffffff;
+    color: ${props => props.theme.textColor};
     text-align: center;
     font-weight: 400;
+
+    @media (max-width: 800px) {
+        width: 80%;
+        margin-top: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 18px;
+    }
 `;
 
 const SearchFrom = styled.form`
@@ -155,6 +164,11 @@ const SearchFrom = styled.form`
     padding: 40px;
     margin-top: 20px;
     background: rgba(0, 0, 0, 0.5);
+
+    @media (max-width: 800px) {
+        height: 35px;
+        padding: 25px;
+    }
 `;
 
 const SearchInput = styled.input.attrs({
@@ -202,6 +216,10 @@ const ImageWrap = styled.a.attrs(props=> ({
 }))`
     margin: auto;
     width: 400px;
+
+    @media (max-width: 800px) {
+        width: 300px;
+    }
 `;
 
 const Image = styled.img.attrs(props => ({
@@ -217,7 +235,11 @@ const CopyrightText = styled.p`
     position: absolute;
     bottom: 10px;
     right: 10px;
-    color: #cacaca;
+    color: ${props => props.theme.textColor};
+
+    @media (max-width: 800px) {
+        font-size: 14px;
+    }
 `;
 
 const CopyrightLink = styled.a.attrs({
@@ -225,7 +247,7 @@ const CopyrightLink = styled.a.attrs({
     target: '_blank',
     title: 'Author on Github'
 })`
-    color: #cacaca;
+    color: ${props => props.theme.textColor};
 
     &:hover {
         color: #9c9c9c;
@@ -241,7 +263,7 @@ const CopyrightIcon = styled.a.attrs({
     height: 20px;
     margin-right: 5px;
     vertical-align: middle;
-    color: #cacaca;
+    color: ${props => props.theme.textColor};
 
     * {
         width: 20px;
