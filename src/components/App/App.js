@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { FaSearch, FaSun, FaMoon } from 'react-icons/fa';
+import { FaSearch, FaSun, FaMoon, FaGithub } from 'react-icons/fa';
 import styles from './App.scss';
 
 export class App extends React.Component {
@@ -79,7 +79,19 @@ export class App extends React.Component {
                     <img src={this.state.image_url} className={styles.image} />                    
                     : null
                 }
-            </div>
+                <p className={styles.copyright}>
+                    <a 
+                        href='https://github.com/gorobchenkoann/insave' 
+                        target='_blank'
+                        className={styles.copyright_icon}
+                    ><FaGithub /></a>
+                    Made by <a 
+                            href='https://github.com/gorobchenkoann' 
+                            target='_blank'
+                            className={styles.copyright_name}
+                            >gorobchenkoann</a>                    
+                </p>
+            </div>            
         )
     }
 }

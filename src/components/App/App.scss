@@ -86,3 +86,37 @@
     width: 400px;
     height: auto;
 }
+
+.copyright {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #cacaca;
+}
+
+.copyright_name {
+    color: #cacaca;
+
+    &:hover {
+        color: #9c9c9c;
+    }
+}
+
+.copyright_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    vertical-align: middle;
+    color: #cacaca;
+
+    * {
+        width: 20px;
+        height: auto;
+    }
+
+    &:hover {
+        color: #9c9c9c;
+    }
+}
