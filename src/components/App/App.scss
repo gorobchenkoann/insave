@@ -1,122 +1,122 @@
-.container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    min-height: 100vh;
-    background-image: url('./assets/bg-dark.png');    
-}
+// .container {
+//     position: relative;
+//     display: flex;
+//     flex-direction: column;
+//     width: 100vw;
+//     min-height: 100vh;
+//     background-image: url('./assets/bg-dark.png');    
+// }
 
-.theme_button {
-    display: flex;
-    position: absolute;
-    top: 40px;
-    right: 40px;
-    width: 50px;
-    height: 50px;    
-    background: #cacaca;
-    border-radius: 50%;
-    border: 0;
-    cursor: pointer;
-    outline: none;
+// .theme_button {
+//     display: flex;
+//     position: absolute;
+//     top: 40px;
+//     right: 40px;
+//     width: 50px;
+//     height: 50px;    
+//     background: #cacaca;
+//     border-radius: 50%;
+//     border: 0;
+//     cursor: pointer;
+//     outline: none;
 
-    * {
-        margin: auto;
-        width: 50%;
-        height: auto;
-    }
-}
+//     * {
+//         margin: auto;
+//         width: 50%;
+//         height: auto;
+//     }
+// }
 
-.inner {
-    width: 800px;
-    margin: 0 auto;
-}
+// .inner {
+//     width: 800px;
+//     margin: 0 auto;
+// }
 
-.title {
-    margin-top: 100px;
-    font-size: 22px;
-    color: #ffffff;
-    text-align: center;
-    font-weight: 400;
-}
+// .title {
+//     margin-top: 100px;
+//     font-size: 22px;
+//     color: #ffffff;
+//     text-align: center;
+//     font-weight: 400;
+// }
 
-.form {
-    display: flex;    
-    height: 50px;
-    padding: 40px;
-    margin-top: 20px;
-    background: rgba(0, 0, 0, 0.5);
-}
+// .form {
+//     display: flex;    
+//     height: 50px;
+//     padding: 40px;
+//     margin-top: 20px;
+//     background: rgba(0, 0, 0, 0.5);
+// }
 
-.input {
-    flex-grow: 1;
-    padding: 5px;
-    margin-right: 10px;
-    font-size: 16px;
-    background: #cacaca;
-    border: 0;
-    outline-color: #076d31;
-}
+// .input {
+//     flex-grow: 1;
+//     padding: 5px;
+//     margin-right: 10px;
+//     font-size: 16px;
+//     background: #cacaca;
+//     border: 0;
+//     outline-color: #076d31;
+// }
 
-.submit {
-    padding: 0;
-    width: 50px;
-    flex-shrink: 0;
-    background: #076d31;
-    cursor: pointer;
-    border: 0;    
-    outline: none;
+// .submit {
+//     padding: 0;
+//     width: 50px;
+//     flex-shrink: 0;
+//     background: #076d31;
+//     cursor: pointer;
+//     border: 0;    
+//     outline: none;
 
-    * {
-        width: 40%;
-        height: auto;
-    }
+//     * {
+//         width: 40%;
+//         height: auto;
+//     }
 
-    &:hover {
-        background: darken(#076d31, 10%);
-    }
+//     &:hover {
+//         background: darken(#076d31, 10%);
+//     }
 
-    &:active {        
-        box-shadow: inset 2px 2px 2px darken(#076d31, 15%);
-    }
-}
+//     &:active {        
+//         box-shadow: inset 2px 2px 2px darken(#076d31, 15%);
+//     }
+// }
 
-.image {
-    margin: auto;
-    width: 400px;
-    height: auto;
-}
+// .image {
+//     margin: auto;
+//     width: 400px;
+//     height: auto;
+// }
 
-.copyright {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    color: #cacaca;
-}
+// .copyright {
+//     margin: 0;
+//     padding: 0;
+//     position: absolute;
+//     bottom: 10px;
+//     right: 10px;
+//     color: #cacaca;
+// }
 
-.copyright_name {
-    color: #cacaca;
+// .copyright_name {
+//     color: #cacaca;
 
-    &:hover {
-        color: #9c9c9c;
-    }
-}
+//     &:hover {
+//         color: #9c9c9c;
+//     }
+// }
 
-.copyright_icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
-    vertical-align: middle;
-    color: #cacaca;
+// .copyright_icon {
+//     width: 20px;
+//     height: 20px;
+//     margin-right: 5px;
+//     vertical-align: middle;
+//     color: #cacaca;
 
-    * {
-        width: 20px;
-        height: auto;
-    }
+//     * {
+//         width: 20px;
+//         height: auto;
+//     }
 
-    &:hover {
-        color: #9c9c9c;
-    }
-}
+//     &:hover {
+//         color: #9c9c9c;
+//     }
+// }
