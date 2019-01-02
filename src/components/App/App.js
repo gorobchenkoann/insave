@@ -192,7 +192,7 @@ const SubmitButton = styled.button.attrs({
 `;
 
 const ImageWrap = styled.a.attrs(props=> ({
-    href: props => props.href,
+    href: props.href,
     target: '_blank'
 }))`
     margin: auto;
@@ -200,7 +200,7 @@ const ImageWrap = styled.a.attrs(props=> ({
 `;
 
 const Image = styled.img.attrs(props => ({
-    src: props => props.src
+    src: props.src
 }))`
     width: 100%;
     height: auto;
