@@ -18,6 +18,10 @@ export class App extends React.Component {
         })
     }
 
+    inputClickHandler = e => {
+        e.target.select();
+    }
+
     btnClickHandler = e => {
         e.preventDefault();
         if (this.state.value) {
@@ -66,6 +70,7 @@ export class App extends React.Component {
                         <SearchInput 
                             value={this.state.values}
                             onChange={this.inputChangeHandler}
+                            onClick={this.inputClickHandler}
                         />
                         <SubmitButton 
                             onClick={this.btnClickHandler}
