@@ -3,11 +3,13 @@ import bgLight from '../assets/bg-light.png';
 
 export const theme = {
     dark: {
-        background: `url(${bgDark})`,
+        backgroundImage: `url(${bgDark})`,
+        backgroundColor: '#1f1f1f' ,
         textColor: '#cacaca'
     },
     light: {
-        background: `url(${bgLight})`,
+        backgroundImage: `url(${bgLight})`,
+        backgroundColor: '#cacaca' ,
         textColor: '#1f1f1f'
     }
 }

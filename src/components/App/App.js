@@ -115,7 +115,8 @@ const Container = styled.div`
     width: 100vw;
     min-width: 350px;
     min-height: 100vh;
-    background-image: ${props => props.theme.background};   
+    background-color: ${props => props.theme.backgroundColor}; 
+    background-image: ${props => props.theme.backgroundImage};   
 `;
 
 const InnerContainer = styled.div`
