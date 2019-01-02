@@ -47,7 +47,11 @@ export class App extends React.Component {
     render() {
         return (
             <div className={styles.container}>
-            <button className={styles.theme_button} onClick={this.toggleTheme}>
+            <button 
+                className={styles.theme_button} 
+                onClick={this.toggleTheme}
+                title='Change color theme'
+            >
                 {this.state.theme === 'dark' ? <FaSun /> : <FaMoon />}                
             </button>
             <div className={styles.inner}>
@@ -70,6 +74,7 @@ export class App extends React.Component {
                         type='submit' 
                         onClick={this.btnClickHandler}
                         className={styles.submit}
+                        title='Search'
                     >
                         <FaSearch />
                     </button>
@@ -84,11 +89,13 @@ export class App extends React.Component {
                         href='https://github.com/gorobchenkoann/insave' 
                         target='_blank'
                         className={styles.copyright_icon}
+                        title='Project on Github'
                     ><FaGithub /></a>
                     Made by <a 
                             href='https://github.com/gorobchenkoann' 
                             target='_blank'
                             className={styles.copyright_name}
+                            title='Author on Github'
                             >gorobchenkoann</a>                    
                 </p>
             </div>            
