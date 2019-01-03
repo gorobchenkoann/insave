@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
+import { darken } from 'polished';
 import { FaSearch, FaSun, FaMoon, FaGithub, FaInfo } from 'react-icons/fa';
 
 import { theme } from '../../utils/theme';
@@ -144,7 +145,7 @@ const Button = styled.button`
     width: 50px;
     height: 50px;  
     margin-bottom: 10px;  
-    background: #cacaca;
+    background: ${props => props.theme.contrastColor};
     border-radius: 50%;
     border: 0;
     cursor: pointer;
@@ -158,6 +159,7 @@ const Button = styled.button`
         margin: auto;
         width: 50%;
         height: auto;
+        color: ${props => props.theme.textColor};
     }
 
     @media (max-width: 800px) {
@@ -175,7 +177,7 @@ const Title = styled.h1`
 
     @media (max-width: 800px) {
         width: 80%;
-        margin-top: 60px;
+        margin-top: 80px;
         margin-left: auto;
         margin-right: auto;
         font-size: 18px;
@@ -193,7 +195,7 @@ const SearchFrom = styled.form`
     height: 50px;
     padding: 40px;
     margin-top: 20px;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: ${props => props.theme.formBackground};
 
     @media (max-width: 800px) {
         height: 35px;
@@ -209,7 +211,7 @@ const SearchInput = styled.input.attrs({
     padding: 5px;
     margin-right: 10px;
     font-size: 16px;
-    background: #cacaca;
+    background: ${props => props.theme.inputBackground};
     border: 0;
     outline-color: #076d31;
 `;
@@ -221,7 +223,7 @@ const SubmitButton = styled.button.attrs({
     padding: 0;
     width: 50px;
     flex-shrink: 0;
-    background: #076d31;
+    background: ${props => props.theme.submitButton};
     cursor: pointer;
     border: 0;    
     outline: none;
@@ -232,11 +234,11 @@ const SubmitButton = styled.button.attrs({
     }
 
     &:hover {
-        background: darken(#076d31, 10%);
+        background: ${props => darken(0.1, props.theme.submitButton)};
     }
 
-    &:active {        
-        box-shadow: inset 2px 2px 2px darken(#076d31, 15%);
+    &:active {      
+        box-shadow: ${props => `inset 2px 2px 2px ${darken(0.2, props.theme.submitButton)}`} 
     }
 `;
 
