@@ -3,8 +3,8 @@ import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { darken } from 'polished';
 import { FaSearch, FaSun, FaMoon, FaGithub, FaInfo } from 'react-icons/fa';
-import { DataElement } from '../';
-import { theme } from '../../utils/theme';
+import { DataElement } from '.';
+import { theme } from '../utils/theme';
 
 export class App extends React.Component {
     state = {

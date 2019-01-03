@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, Video, Slider } from '../';
+import { Image, Video, Slider } from '.';
 
 export const DataElement = ({dataType, data}) => {
     switch (dataType) {
