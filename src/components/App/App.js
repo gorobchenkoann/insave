@@ -116,8 +116,7 @@ const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 100vw;
-    min-width: 350px;
+    min-width: 450px;
     min-height: 100vh;
     background-color: ${props => props.theme.backgroundColor}; 
     background-image: ${props => props.theme.backgroundImage};   
@@ -127,14 +126,15 @@ const InnerContainer = styled.div`
     width: 800px;
     margin: 0 auto;
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
         width: 100%;
     }
 `;
 
 const ButtonWrap = styled.div`
     position: absolute;
-    top: 10px;
+    top: 50%;
+    transfrom: translateY(-50%);
     right: 10px;
     display: flex;
     flex-direction: column;
@@ -162,7 +162,7 @@ const Button = styled.button`
         color: ${props => props.theme.textColor};
     }
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
         width: 40px;
         height: 40px;
     }
@@ -175,7 +175,7 @@ const Title = styled.h1`
     text-align: center;
     font-weight: 400;
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
         width: 80%;
         margin-top: 80px;
         margin-left: auto;
@@ -195,9 +195,10 @@ const SearchFrom = styled.form`
     height: 50px;
     padding: 40px;
     margin-top: 20px;
+    margin-bottom: 10px;
     background-color: ${props => props.theme.formBackground};
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
         height: 35px;
         padding: 25px;
     }
@@ -245,12 +246,12 @@ const SubmitButton = styled.button.attrs({
 const ImageWrap = styled.a.attrs(props=> ({
     href: props.href,
     target: '_blank'
-}))`
-    margin: auto;
+}))`    
     width: 400px;
+    margin: auto;
 
-    @media (max-width: 800px) {
-        width: 300px;
+    @media (max-width: 900px) {
+        width: 350px;
     }
 `;
 
@@ -269,7 +270,7 @@ const CopyrightText = styled.p`
     right: 10px;
     color: ${props => props.theme.textColor};
 
-    @media (max-width: 800px) {
+    @media (max-width: 900px) {
         font-size: 14px;
     }
 `;
