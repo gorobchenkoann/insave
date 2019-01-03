@@ -3,7 +3,7 @@ import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { darken } from 'polished';
 import { FaSearch, FaSun, FaMoon, FaGithub, FaInfo } from 'react-icons/fa';
-
+import { DataElement } from '../';
 import { theme } from '../../utils/theme';
 
 export class App extends React.Component {
@@ -11,7 +11,9 @@ export class App extends React.Component {
         value: null,
         image_url: null,
         theme: 'dark',
-        error: false
+        error: false,
+        dataType: null,
+        data: {}
     }
 
     inputChangeHandler = e => {
@@ -39,11 +41,31 @@ export class App extends React.Component {
                 data = data.split(';</script>')[0];
                 data = JSON.parse(data);
                 console.log(data)
-                let image_url = data.entry_data.PostPage[0].graphql.shortcode_media.display_url;
-                this.setState({
-                    image_url: image_url,
-                    error: false
-                });
+                let dataObject = data.entry_data.PostPage[0].graphql.shortcode_media;               
+                if (dataObject.__typename === 'GraphImage') {
+                    this.setState({
+                        dataType: 'image',
+                        data: {
+                            image_url: dataObject.display_url
+                        },
+                        error: false                        
+                    });
+                } else if (dataObject.__typename === 'GraphSidecar') {
+                    let slides = dataObject.edge_sidecar_to_children.edges;
+                    
+                    this.setState({
+                        dataType: 'slider',
+                        data: {}
+                    })
+                } else if (dataObject.__typename === 'GraphVideo') {
+                    this.setState({
+                        dataType: 'video',
+                        data: {
+                            video_url: dataObject.video_url
+                        },
+                        error: false  
+                    })
+                }   
             })
             .catch(error => 
                 this.setState({
@@ -60,9 +82,9 @@ export class App extends React.Component {
     }
 
     render() {
-        return (            
-            <ThemeProvider theme={theme[this.state.theme]}>
-            <Container>
+        return (                    
+            <ThemeProvider theme={theme[this.state.theme]}>            
+            <Container>             
                 <ButtonWrap>
                     <Button><FaInfo /></Button>
                     <Button 
@@ -92,10 +114,8 @@ export class App extends React.Component {
                         </SubmitButton>
                     </SearchFrom>
                 </InnerContainer>
-                {this.state.image_url ? 
-                    <ImageWrap href={this.state.image_url}>            
-                        <Image src={this.state.image_url} />  
-                    </ImageWrap>                  
+                {this.state.dataType ? 
+                    <DataElement dataType={this.state.dataType} data={this.state.data}/> 
                     : null
                 }
                 {this.state.error ? 
@@ -241,25 +261,6 @@ const SubmitButton = styled.button.attrs({
     &:active {      
         box-shadow: ${props => `inset 2px 2px 2px ${darken(0.2, props.theme.submitButton)}`} 
     }
-`;
-
-const ImageWrap = styled.a.attrs(props=> ({
-    href: props.href,
-    target: '_blank'
-}))`    
-    width: 400px;
-    margin: auto;
-
-    @media (max-width: 900px) {
-        width: 350px;
-    }
-`;
-
-const Image = styled.img.attrs(props => ({
-    src: props.src
-}))`
-    width: 100%;
-    height: auto;
 `;
 
 const CopyrightText = styled.p`
