@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
-import { FaSearch, FaSun, FaMoon, FaGithub } from 'react-icons/fa';
+import { FaSearch, FaSun, FaMoon, FaGithub, FaInfo } from 'react-icons/fa';
 
 import { theme } from '../../utils/theme';
 
@@ -62,11 +62,14 @@ export class App extends React.Component {
         return (            
             <ThemeProvider theme={theme[this.state.theme]}>
             <Container>
-                <ThemeButton 
-                    onClick={this.toggleTheme}
-                >
-                    {this.state.theme === 'dark' ? <FaSun /> : <FaMoon />} 
-                </ThemeButton>
+                <ButtonWrap>
+                    <Button><FaInfo /></Button>
+                    <Button 
+                        onClick={this.toggleTheme}
+                    >
+                        {this.state.theme === 'dark' ? <FaSun /> : <FaMoon />} 
+                    </Button>    
+                </ButtonWrap>            
                 <InnerContainer>
                     {this.state.image_url ? null :
                     <Title>
@@ -128,20 +131,28 @@ const InnerContainer = styled.div`
     }
 `;
 
-const ThemeButton = styled.button.attrs({
-    title: 'Change color theme'
-})`
-    display: flex;
+const ButtonWrap = styled.div`
     position: absolute;
     top: 10px;
     right: 10px;
+    display: flex;
+    flex-direction: column;
+`;
+
+const Button = styled.button`
+    display: flex;
     width: 50px;
-    height: 50px;    
+    height: 50px;  
+    margin-bottom: 10px;  
     background: #cacaca;
     border-radius: 50%;
     border: 0;
     cursor: pointer;
     outline: none;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
 
     * {
         margin: auto;
