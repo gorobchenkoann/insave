@@ -94,7 +94,7 @@ export class App extends React.Component {
                     </Button>    
                 </ButtonWrap>            
                 <InnerContainer>
-                    {this.state.image_url ? null :
+                    {this.state.dataType ? null :
                     <Title>
                         You can download photos from Instagram using this app. 
                         To do this, copy the link to the post in Instagram 
