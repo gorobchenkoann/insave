@@ -136,7 +136,7 @@ const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    min-width: 350px;
+    min-width: 320px;
     height: 100vh;
     background-color: ${props => props.theme.backgroundColor}; 
     background-image: ${props => props.theme.backgroundImage};   
