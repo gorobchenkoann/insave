@@ -17,4 +17,8 @@ const VideoElement = styled.video`
     @media (max-width: 900px) {
         width: 350px;
     }
+
+    @media (max-width: 400px) {
+        width: 300px;
+    }
 `;

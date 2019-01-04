@@ -19,6 +19,10 @@ const ImageWrap = styled.a.attrs(props=> ({
     @media (max-width: 900px) {
         width: 350px;
     }
+
+    @media (max-width: 400px) {
+        width: 300px;
+    }
 `;
 
 const ImageElement = styled.img.attrs(props => ({
