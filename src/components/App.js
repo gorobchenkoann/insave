@@ -81,7 +81,7 @@ export class App extends React.Component {
         }))
     }
 
-    render() {
+    render() {        
         return (                    
             <ThemeProvider theme={theme[this.state.theme]}>            
             <Container>             
@@ -136,8 +136,8 @@ const Container = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
-    min-width: 450px;
-    min-height: 100vh;
+    min-width: 350px;
+    height: 100vh;
     background-color: ${props => props.theme.backgroundColor}; 
     background-image: ${props => props.theme.backgroundImage};   
 `;
