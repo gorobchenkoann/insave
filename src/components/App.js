@@ -165,7 +165,7 @@ const Button = styled.button`
     width: 50px;
     height: 50px;  
     margin-bottom: 10px;  
-    background: ${props => props.theme.contrastColor};
+    background: ${props => props.theme.mainColor};
     border-radius: 50%;
     border: 0;
     cursor: pointer;
@@ -179,7 +179,7 @@ const Button = styled.button`
         margin: auto;
         width: 50%;
         height: auto;
-        color: ${props => props.theme.textColor};
+        color: ${props => props.theme.contrastColor};
     }
 
     @media (max-width: 900px) {
@@ -191,7 +191,7 @@ const Button = styled.button`
 const Title = styled.h1`
     margin-top: 100px;
     font-size: 22px;
-    color: ${props => props.theme.textColor};
+    color: ${props => props.theme.contrastColor};
     text-align: center;
     font-weight: 400;
 
@@ -269,7 +269,7 @@ const CopyrightText = styled.p`
     position: absolute;
     bottom: 10px;
     right: 10px;
-    color: ${props => props.theme.textColor};
+    color: ${props => props.theme.contrastColor};
 
     @media (max-width: 900px) {
         font-size: 14px;
@@ -281,7 +281,7 @@ const CopyrightLink = styled.a.attrs({
     target: '_blank',
     title: 'Author on Github'
 })`
-    color: ${props => props.theme.textColor};
+    color: ${props => props.theme.contrastColor};
 
     &:hover {
         color: #9c9c9c;
@@ -297,7 +297,7 @@ const CopyrightIcon = styled.a.attrs({
     height: 20px;
     margin-right: 5px;
     vertical-align: middle;
-    color: ${props => props.theme.textColor};
+    color: ${props => props.theme.contrastColor};
 
     * {
         width: 20px;
