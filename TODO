@@ -1,4 +1,4 @@
 display_url -> display_resources [array]
 add 'save' button
 add app instructions
-add components: image, video, slider
+fix bug with 100vh height for mobile
