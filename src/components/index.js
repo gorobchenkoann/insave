@@ -1,5 +1,5 @@
 export { App } from './App';
-export { DataElement } from './DataElement';
-export { Image } from './Image';
-export { Slider } from './Slider';
-export { Video } from './Video';
+export { DataElement } from './Widgets/DataElement';
+export { Image } from './Widgets/Image';
+export { Slider } from './Widgets/Slider';
+export { Video } from './Widgets/Video';
