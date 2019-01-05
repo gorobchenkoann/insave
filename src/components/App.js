@@ -29,11 +29,11 @@ export class App extends React.Component {
     btnClickHandler = e => {
         e.preventDefault();
         if (this.state.value) {
-            this.searchImage();
+            this.getData();
         }
     }
 
-    searchImage = () => {
+    getData = () => {
         axios.get(this.state.value)
             .then(response => {
                 let data = response.data;
@@ -51,11 +51,24 @@ export class App extends React.Component {
                         error: false                        
                     });
                 } else if (dataObject.__typename === 'GraphSidecar') {
-                    let slides = dataObject.edge_sidecar_to_children.edges;
-                    
+                    let slides = dataObject.edge_sidecar_to_children.edges;                
+                    let slidesData = [];                   
+                    slides.map(el => {
+                        el.node.__typename === 'GraphVideo' ? 
+                        slidesData.push({
+                            data_type: el.node.__typename,
+                            video_url: el.node.video_url
+                        }) : 
+                        slidesData.push({
+                            data_type: el.node.__typename,
+                            image_url: el.node.display_url
+                        })          
+                    })
                     this.setState({
                         dataType: 'slider',
-                        data: {}
+                        data: {
+                            slides: slidesData
+                        }
                     })
                 } else if (dataObject.__typename === 'GraphVideo') {
                     this.setState({
