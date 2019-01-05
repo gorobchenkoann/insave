@@ -68,7 +68,8 @@ export class App extends React.Component {
                         dataType: 'slider',
                         data: {
                             slides: slidesData
-                        }
+                        },
+                        error: false
                     })
                 } else if (dataObject.__typename === 'GraphVideo') {
                     this.setState({

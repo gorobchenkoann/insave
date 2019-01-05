@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 export const Image = ({data}) => {
-    console.log(data)
     return (
         <Wrap>
             <DownloadLink>Download</DownloadLink>
