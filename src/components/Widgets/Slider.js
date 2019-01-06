@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { darken } from 'polished';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { Image, Video } from '../';
 
 export class Slider extends React.Component {
@@ -39,9 +41,13 @@ export class Slider extends React.Component {
     render() {
         return (
             <SliderWrap>
-                <SliderButtonLeft onClick={this.slideLeft}>-</SliderButtonLeft>            
+                <SliderButtonLeft onClick={this.slideLeft}>
+                    <FaChevronLeft />
+                </SliderButtonLeft>            
                 {this.getSlide()}
-                <SliderButtonRight onClick={this.slideRight}>+</SliderButtonRight>
+                <SliderButtonRight onClick={this.slideRight}>
+                    <FaChevronRight />
+                </SliderButtonRight>
             </SliderWrap>
         )
     }
@@ -53,24 +59,39 @@ const SliderWrap = styled.div`
 `;
 
 const SliderButton = styled.button`
-    width: 20px;
+    width: 40px;
     height: 40px;
     margin-top: auto;
     margin-bottom: auto;
     color: ${props => props.theme.contrastColor};
-    background-color: ${props => props.theme.mainColor};  
+    background-color: transparent; 
+    opacity: 0.5; 
     border: 0;
     cursor: pointer;
+    outline: none;
+
+    * {
+        width: 100%;
+        height: auto;
+    }
+
+    &:hover {
+        color: ${props => darken(0.2, props.theme.contrastColor)};
+    }
+
+    &:active {
+        color: ${props => darken(0.4, props.theme.contrastColor)};
+    }
 `;
 
 const SliderButtonLeft = styled(SliderButton).attrs({
     title: 'Previous slide'
 })`
-    margin-right: 10px;
+    margin-right: 20px;
 `;
 
 const SliderButtonRight = styled(SliderButton).attrs({
     title: 'Next slide'
 })`
-    margin-left: 10px;
+    margin-left: 20px;
 `;
