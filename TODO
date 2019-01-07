@@ -1,4 +1,4 @@
-display_url -> display_resources [array]
 add 'save' button
 add app instructions
 fix bug with 100vh height for mobile
+add slide animation
