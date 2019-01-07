@@ -41,11 +41,23 @@ export class Slider extends React.Component {
     render() {
         return (
             <SliderWrap>
-                <SliderButtonLeft onClick={this.slideLeft}>
+                <SliderButtonLeft 
+                    onClick={this.slideLeft}
+                    disabled = {
+                        this.state.currentSlide === 0 
+                        ? true : false
+                    }
+                    >
                     <FaChevronLeft />
                 </SliderButtonLeft>            
                 {this.getSlide()}
-                <SliderButtonRight onClick={this.slideRight}>
+                <SliderButtonRight 
+                    onClick={this.slideRight}
+                    disabled = {
+                        this.state.currentSlide === this.slideLength 
+                        ? true : false
+                    }
+                >
                     <FaChevronRight />
                 </SliderButtonRight>
             </SliderWrap>
@@ -54,15 +66,19 @@ export class Slider extends React.Component {
 }
 
 const SliderWrap = styled.div`
-    display: flex;
-    margin: auto;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
 `;
 
 const SliderButton = styled.button`
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     width: 40px;
     height: 40px;
-    margin-top: auto;
-    margin-bottom: auto;
     color: ${props => props.theme.contrastColor};
     background-color: transparent; 
     opacity: 0.5; 
@@ -82,16 +98,21 @@ const SliderButton = styled.button`
     &:active {
         color: ${props => darken(0.4, props.theme.contrastColor)};
     }
+
+    &:disabled {
+        color: ${props => darken(0.8, props.theme.contrastColor)};
+        cursor: initial;
+    }
 `;
 
 const SliderButtonLeft = styled(SliderButton).attrs({
     title: 'Previous slide'
 })`
-    margin-right: 20px;
+    left: -50px;
 `;
 
 const SliderButtonRight = styled(SliderButton).attrs({
     title: 'Next slide'
 })`
-    margin-left: 20px;
+    right: -50px;
 `;

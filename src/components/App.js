@@ -152,8 +152,10 @@ const Container = styled.div`
     flex-direction: column;
     min-width: 320px;
     min-height: 100vh;
+    padding: 10px;
     background-color: ${props => props.theme.backgroundColor}; 
-    background-image: ${props => props.theme.backgroundImage};   
+    background-image: ${props => props.theme.backgroundImage};  
+    box-sizing: border-box; 
 `;
 
 const InnerContainer = styled.div`

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const Video = ({data}) => {
     return (
-        <VideoElement controls>
+        <VideoElement controls key={data.video_url}>
             <source src={data.video_url} type='video/mp4'></source>
         </VideoElement>
     )

@@ -14,8 +14,8 @@ export const Image = ({data}) => {
 
 const Wrap = styled.div`
     display: flex;
-    flex-direction: column;
-    margin-top: 20px;
+    flex-direction: column;    
+    margin: auto;
 `;
 
 const DownloadLink = styled.a.attrs({
