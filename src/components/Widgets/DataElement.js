@@ -13,7 +13,7 @@ export const DataElement = ({dataType, data}) => {
             )
         case 'slider':
             return (
-                <Slider data={data} />
+                <Slider data={data} key={Math.random()}/>
             )
         default:
             return null

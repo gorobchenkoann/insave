@@ -1,20 +1,43 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { FaSpinner } from 'react-icons/fa';
 
-export const Image = ({data}) => {
-    return (
-        <Wrap>
-            <DownloadLink>Download</DownloadLink>
-            <ImageWrap href={data.image_url}>              
-                <ImageElement src={data.image_url} />  
-            </ImageWrap> 
-        </Wrap>
-    )
+export class Image extends React.Component {
+    state = {
+        isLoading: true
+    }
+
+    imageLoadHandler = () => {
+        this.setState({
+            isLoading: false
+        })
+    }
+
+    render() {
+        const {data} = this.props;
+        return (
+            <Wrap>
+                <DownloadLink>Download</DownloadLink>
+                <ImageWrap href={data.image_url}>                 
+                    {this.state.isLoading ? 
+                        <Rotate><FaSpinner /></Rotate> 
+                        : null
+                    }             
+                    <ImageElement 
+                        src={data.image_url} 
+                        onLoad={this.imageLoadHandler}
+                    />                      
+                </ImageWrap> 
+            </Wrap>
+        )
+    }
 }
 
 const Wrap = styled.div`
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;   
+    width: 400px;
+    min-height: 300px; 
     margin: auto;
 `;
 
@@ -56,5 +79,31 @@ const ImageWrap = styled.a.attrs(props=> ({
 
     @media (max-width: 400px) {
         width: 300px;
+    }
+`;
+
+const rotate = keyframes`
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+`;
+
+const Rotate = styled.span`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    color: ${props => props.theme.contrastColor};
+    animation: ${rotate} 2s linear infinite;
+
+    * {
+        width: 100%;
+        height: auto;
     }
 `;
