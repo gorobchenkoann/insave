@@ -17,7 +17,7 @@ export class Image extends React.Component {
         const {data} = this.props;
         return (
             <Wrap>
-                <DownloadLink>Download</DownloadLink>
+                <DownloadLink href={data.image_url}> Download</DownloadLink>
                 <ImageWrap href={data.image_url}>                 
                     {this.state.isLoading ? 
                         <Rotate><FaSpinner /></Rotate> 
@@ -42,7 +42,8 @@ const Wrap = styled.div`
 `;
 
 const DownloadLink = styled.a.attrs({
-    title: 'Download image'
+    title: 'Download image',
+    target: '_blank'
 })`
     display: block;
     width: 100px;
