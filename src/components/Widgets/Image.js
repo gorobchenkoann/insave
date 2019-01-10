@@ -16,54 +16,43 @@ export class Image extends React.Component {
     render() {
         const {data} = this.props;
         return (
-            <Wrap>                
-                <ImageWrap href={data.image_url}>                 
-                    {this.state.isLoading ? 
-                        <Rotate><FaSpinner /></Rotate> 
-                        : null
-                    }             
-                    <ImageElement 
-                        src={data.image_url} 
-                        onLoad={this.imageLoadHandler}
-                    />                      
-                </ImageWrap> 
-                <DownloadLink href={data.image_url}> Download</DownloadLink>
-            </Wrap>
+            <>
+            <ImageWrap href={data.image_url}>                 
+                {this.state.isLoading ? 
+                    <Rotate><FaSpinner /></Rotate> 
+                    : null
+                }             
+                <ImageElement 
+                    src={data.image_url} 
+                    onLoad={this.imageLoadHandler}
+                />                      
+            </ImageWrap> 
+            {this.state.isLoading 
+                ? null 
+                : <DownloadLink href={data.image_url}> Download</DownloadLink>            
+            }
+            </>
         )
     }
 }
 
-const Wrap = styled.div`
-    display: flex;
-    flex-direction: column;   
+const ImageWrap = styled.a.attrs(props=> ({
+    href: props.href,
+    target: '_blank'
+}))`    
+    position: relative;
+    display: block;
     width: 400px;
-    min-height: 200px; 
     margin: auto;
+    z-index: 10; // ButtonWrap in App.js should be on top
 
     @media (max-width: 900px) {
         width: 350px;
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 450px) {
         width: 300px;
     }
-`;
-
-const DownloadLink = styled.a.attrs({
-    title: 'Download image',
-    target: '_blank'
-})`
-    display: block;
-    width: 100px;
-    padding: 6px 0;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 10px;
-    color: ${props => props.theme.contrastColor};
-    background-color: ${props => props.theme.mainColor};  
-    text-align: center;
-    border-radius: 2px;
-    cursor: pointer;  
 `;
 
 const ImageElement = styled.img.attrs(props => ({
@@ -71,16 +60,7 @@ const ImageElement = styled.img.attrs(props => ({
 }))`
     display: block;
     width: 100%;
-    height: auto;
-`;
-
-const ImageWrap = styled.a.attrs(props=> ({
-    href: props.href,
-    target: '_blank'
-}))`    
-    position: relative;
-    width: 100%;
-    margin: auto;
+    height: auto;    
 `;
 
 const rotate = keyframes`
@@ -107,4 +87,22 @@ const Rotate = styled.span`
         width: 100%;
         height: auto;
     }
+`;
+
+const DownloadLink = styled.a.attrs({
+    title: 'Download image',
+    target: '_blank'
+})`
+    display: block;
+    width: 100px;
+    padding: 6px 0;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: 10px;
+    color: ${props => props.theme.contrastColor};
+    background-color: ${props => props.theme.mainColor};  
+    text-align: center;
+    border-radius: 2px;
+    cursor: pointer;  
 `;

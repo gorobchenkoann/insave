@@ -126,15 +126,15 @@ export class App extends React.Component {
                             <FaSearch />
                         </SubmitButton>
                     </SearchFrom>
+                    {this.state.dataType ? 
+                        <DataElement dataType={this.state.dataType} data={this.state.data}/> 
+                        : null
+                    }
+                    {this.state.error ? 
+                        <Error as='h2'>There is something wrong with this URL, try again.</Error> 
+                        : null
+                    }
                 </InnerContainer>
-                {this.state.dataType ? 
-                    <DataElement dataType={this.state.dataType} data={this.state.data}/> 
-                    : null
-                }
-                {this.state.error ? 
-                    <Error as='h2'>There is something wrong with this URL, try again.</Error> 
-                    : null
-                }
                 <CopyrightText>
                     <CopyrightIcon><FaGithub /></CopyrightIcon>
                     Made by <CopyrightLink>gorobchenkoann</CopyrightLink>                    
@@ -158,8 +158,12 @@ const Container = styled.div`
 `;
 
 const InnerContainer = styled.div`
-    width: 800px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 800px;    
     margin: 0 auto;
+    flex-grow: 1; 
 
     @media (max-width: 900px) {
         width: 100%;
@@ -173,6 +177,14 @@ const ButtonWrap = styled.div`
     right: 10px;
     display: flex;
     flex-direction: column;
+    z-index: 100; // ImageWrap in Image.js should be on background
+
+    @media (max-width: 400px) {
+        top: 100%;
+        left: 10px;
+        transform: translateY(-100%);
+        flex-direction: row;
+    }
 `;
 
 const Button = styled.button`
@@ -200,6 +212,10 @@ const Button = styled.button`
     @media (max-width: 900px) {
         width: 40px;
         height: 40px;
+    }
+
+    @media (max-width: 400px) {
+        margin-right: 10px;
     }
 `;
 
