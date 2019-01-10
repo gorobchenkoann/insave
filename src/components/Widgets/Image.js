@@ -16,8 +16,7 @@ export class Image extends React.Component {
     render() {
         const {data} = this.props;
         return (
-            <Wrap>
-                <DownloadLink href={data.image_url}> Download</DownloadLink>
+            <Wrap>                
                 <ImageWrap href={data.image_url}>                 
                     {this.state.isLoading ? 
                         <Rotate><FaSpinner /></Rotate> 
@@ -28,6 +27,7 @@ export class Image extends React.Component {
                         onLoad={this.imageLoadHandler}
                     />                      
                 </ImageWrap> 
+                <DownloadLink href={data.image_url}> Download</DownloadLink>
             </Wrap>
         )
     }
@@ -37,8 +37,16 @@ const Wrap = styled.div`
     display: flex;
     flex-direction: column;   
     width: 400px;
-    min-height: 300px; 
+    min-height: 200px; 
     margin: auto;
+
+    @media (max-width: 900px) {
+        width: 350px;
+    }
+
+    @media (max-width: 400px) {
+        width: 300px;
+    }
 `;
 
 const DownloadLink = styled.a.attrs({
@@ -50,7 +58,7 @@ const DownloadLink = styled.a.attrs({
     padding: 6px 0;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 10px;
+    margin-top: 10px;
     color: ${props => props.theme.contrastColor};
     background-color: ${props => props.theme.mainColor};  
     text-align: center;
@@ -71,16 +79,8 @@ const ImageWrap = styled.a.attrs(props=> ({
     target: '_blank'
 }))`    
     position: relative;
-    width: 400px;
+    width: 100%;
     margin: auto;
-
-    @media (max-width: 900px) {
-        width: 350px;
-    }
-
-    @media (max-width: 400px) {
-        width: 300px;
-    }
 `;
 
 const rotate = keyframes`

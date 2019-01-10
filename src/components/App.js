@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 import styled, { ThemeProvider } from 'styled-components';
 import { darken } from 'polished';
 import { FaSearch, FaSun, FaMoon, FaGithub, FaInfo } from 'react-icons/fa';
@@ -34,21 +33,20 @@ export class App extends React.Component {
     }
 
     getData = () => {
-        axios.get(this.state.value)
-            .then(response => {
-                let data = response.data;
+        fetch(this.state.value)
+            .then((res) => res.text())
+            .then((data) => {
                 data = data.split('window._sharedData = ')[1];
                 data = data.split(';</script>')[0];
                 data = JSON.parse(data);
-                console.log(data)
+
                 let dataObject = data.entry_data.PostPage[0].graphql.shortcode_media;               
                 if (dataObject.__typename === 'GraphImage') {
                     this.setState({
                         dataType: 'image',
                         data: {
                             image_url: dataObject.display_url
-                        },
-                        error: false                        
+                        }                       
                     });
                 } else if (dataObject.__typename === 'GraphSidecar') {
                     let slides = dataObject.edge_sidecar_to_children.edges;                
@@ -68,24 +66,25 @@ export class App extends React.Component {
                         dataType: 'slider',
                         data: {
                             slides: slidesData
-                        },
-                        error: false
+                        }
                     })
                 } else if (dataObject.__typename === 'GraphVideo') {
                     this.setState({
                         dataType: 'video',
                         data: {
                             video_url: dataObject.video_url
-                        },
-                        error: false  
+                        }  
                     })
-                }   
+                }
+                this.setState({
+                    error: false
+                })   
             })
-            .catch(error => 
+            .catch(() => {
                 this.setState({
                     error: true
                 })
-            )            
+            })
     }
 
     toggleTheme = () => {
