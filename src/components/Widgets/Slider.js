@@ -31,9 +31,9 @@ export class Slider extends React.Component {
     getSlide = () => {
         let currentData = this.slideData[this.state.currentSlide];
         if (currentData.data_type === 'GraphImage') {
-            return <Image data={currentData} />
+            return <Image data={currentData} key={currentData.image_url} />
         } else {
-            return <Video data={currentData} />
+            return <Video data={currentData} key={currentData.video_url}/>
         }
 
     }

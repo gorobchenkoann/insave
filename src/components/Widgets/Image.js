@@ -4,7 +4,8 @@ import { FaSpinner } from 'react-icons/fa';
 
 export class Image extends React.Component {
     state = {
-        isLoading: true
+        isLoading: true,
+        data: this.props.data
     }
 
     imageLoadHandler = () => {
@@ -17,20 +18,17 @@ export class Image extends React.Component {
         const {data} = this.props;
         return (
             <>
-            <ImageWrap href={data.image_url}>                 
-                {this.state.isLoading ? 
-                    <Rotate><FaSpinner /></Rotate> 
-                    : null
-                }             
-                <ImageElement 
-                    src={data.image_url} 
-                    onLoad={this.imageLoadHandler}
-                />                      
-            </ImageWrap> 
-            {this.state.isLoading 
-                ? null 
-                : <DownloadLink href={data.image_url}> Download</DownloadLink>            
-            }
+                <ImageWrap href={data.image_url}>                 
+                    {this.state.isLoading ? 
+                        <Rotate><FaSpinner /></Rotate> 
+                        : null
+                    }             
+                    <ImageElement 
+                        src={data.image_url} 
+                        onLoad={this.imageLoadHandler}                        
+                    />                      
+                </ImageWrap> 
+                <DownloadLink href={data.image_url}> Download</DownloadLink> 
             </>
         )
     }
