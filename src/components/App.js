@@ -173,7 +173,7 @@ const InnerContainer = styled.div`
 const ButtonWrap = styled.div`
     position: absolute;
     top: 50%;
-    transfrom: translateY(-50%);
+    transform: translateY(-50%);
     right: 10px;
     display: flex;
     flex-direction: column;
