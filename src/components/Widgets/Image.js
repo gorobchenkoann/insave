@@ -4,8 +4,7 @@ import { FaSpinner } from 'react-icons/fa';
 
 export class Image extends React.Component {
     state = {
-        isLoading: true,
-        data: this.props.data
+        isLoading: true
     }
 
     imageLoadHandler = () => {
