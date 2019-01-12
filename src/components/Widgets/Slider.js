@@ -69,6 +69,8 @@ export class Slider extends React.Component {
 
 const SliderWrap = styled.div`
     position: relative;
+    display: flex;
+    flex-direction: column;
     width: 100%;
     margin: auto;
 
